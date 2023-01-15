@@ -1,0 +1,69 @@
+Q1) Student Table in SAS.
+Data student;
+input id name$ marks;
+datalines;
+1 Ajay 88
+2 Sayali 90
+3 Mrunali 88
+4 Danish 89
+5 ghyan 90
+;
+run;
+proc print data = student;
+run;
+
+Q2) Addition Program in SAS.
+Data add;
+input num1  num2;
+result = num1 + num2;
+dataline;
+56 76
+32 44
+56 78
+;
+run;
+
+proc print data = add;
+run;
+
+Q3) Employee Table in SAS.
+ata employee;
+input id name$ domain$ salary;
+datalines;
+1 Ajay Analyst 5400
+2 Satish Testing 4500
+3 Sayali Analyst 5450
+4 Mrunali Assosiate 6600
+5 Jay DevOps 5800
+;
+run;
+proc print data = employee;
+run;
+
+Q4) Script Concate in SAS.
+Data Script;
+input a1 $ a2 $ a3 $ a4 $ a5 $;
+
+array colours(5)$ a1-a5;
+
+mix = a1||'+'||a2;
+
+Datalines;
+
+Yellow Pink Orange Green Blue
+;
+
+run;
+proc print data = Script;
+run;
+
+
+Q5) Program to remove blank spaces in string.
+
+data temp;
+name = 'Python   Sas';
+std_name = COMPBL(name);
+run;
+
+proc print data = temp;
+run;

@@ -1,0 +1,172 @@
+Q1) Write SAS Program 'OF Operators'.
+=>> 
+#OF Operator
+data array_example_OF;
+input A1 A2 A3 A4;
+array A(4) A1-A4;
+A_SUM = SUM(OF A(*));
+A_MEAN = MEAN(OF A(*));
+A_MIN = MIN(OF A(*));
+
+DATALINES;
+21 4 52 11
+96 25 42 6
+;
+
+RUN;
+PROC PRINT data =  array_example_OF;
+run;
+
+
+Q2) Write SAS Program 'IN Operators'.
+=>> 
+#IN Operator
+data array_in_example;
+input A1 $ A2 $ A3 $ A4 $;
+ARRAY COLOURS(4) A1-A4;
+IF 'YELLOW' IN COLOURS THEN available = 'YES'; ELSE available = 'NO';
+DATALINES;
+ORANGE PINK VIOLET YELLOW
+;
+
+RUN;
+PROC PRINT data = array_in_example;
+RUN;
+
+
+Q3) Write a SAS Code to apply string function in array(uppercase).
+=>>
+data array_example_OF;
+input A1 $;
+array A(1) A1;
+A_upper = UPCASE(OF A(*));
+DATALINES;
+a
+;
+
+run;
+proc print data = array_example;
+run;
+
+
+Q4) Arithmetic Operators(Add, Substract, and multiplication)in SAS.
+=>> 
+data OPERATORS;
+input A1 A2 ;
+ARRAY A(2) A1-A2;
+ADD = A1+A2;
+SUB = A1-A2;
+MUL = A1*A2;
+
+DATALINES;
+20 4
+;
+
+PROC PRINT DATA = OPERATORS;
+RUN;
+
+
+Q5) Logical Operators in SAS.
+=>>
+data OPERATORS;
+input A1 A2 ;
+ARRAY A(2) A1-A2;
+And = (A1>10 & A2>5);
+Or = (A1>10 | A2>5);
+not = ~(A1>10);
+
+DATALINES;
+20 4
+;
+
+
+PROC PRINT DATA = OPERATORS;
+RUN;
+
+Q6) Comparison Operators in SAS.
+=>>
+data OPERATORS;
+input A1 A2 ;
+ARRAY A(2) A1-A2;
+equal = (A1=10);
+not_equal = (A1!=A2);
+less = (A1<A2);
+lessTHAN = (A1<=A2);
+greater = (A1>A2);
+greaterTHAN = (A1>=A2);
+IN = A1 in (20,4)
+
+DATALINES;
+20 4
+;
+
+PROC PRINT DATA = OPERATORS;
+RUN;
+
+LOOPING
+
+Q7) Looping in SAS( DO Loop).
+=>>
+data loop_statement;
+input n;
+do i = 1 to 5;
+s = n + i; 
+end;
+datalines;
+20
+30
+40
+run;
+proc print data = loop_statement;
+run;
+
+Q8) Looping in SAS( DOUNTIL Loop).
+=>>
+
+data loop_statement;
+i = 1;
+input n;
+do until(i = 5);
+s = n + i;
+i = i+1; 
+end;
+datalines;
+20
+30
+40
+run;
+
+proc print data = loop_statement;
+run;
+
+
+Q9) Looping in SAS( DOWHILE Loop).
+=>>
+data loop_statement;
+i = 1;
+input n;
+do while(i < 5);
+s = n + i;
+i = i+1; 
+end;
+datalines;
+20
+30
+40
+run;
+
+proc print data = loop_statement;
+run;
+
+
+
+
+
+
+
+
+
+
+
+
+

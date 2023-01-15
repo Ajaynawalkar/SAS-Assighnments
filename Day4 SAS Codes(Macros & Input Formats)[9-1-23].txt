@@ -1,0 +1,128 @@
+Q1) Code for Name Input Method  in SAS.
+=>
+data temp;
+input EMPID= ENAME= $ DEPT= $;
+datalines;
+EMPID=1 ENAME=Rick DEPT=IT
+EMPID=2 ENAME=Dan DEPT=OPS
+EMPID=3 ENAME=Tushar DEPT=IT
+EMPID=4 ENAME=Pranab DEPT= OPS
+EMPID=5 ENAME=Rashmi DEPT=FIN
+;
+PROC Print data = temp;
+run;
+
+
+Q2) Code for Column Input Method  in SAS.
+=> 
+data temp;
+input EMPID 1-3 ENAME $ 4-12 DEPT $ 13-16;
+datalines;
+14 Rick      IT
+241Dan       OPS
+30 Sanvi     IT
+410Chanchal  OPS
+52 Piyu      FIN
+;
+proc print data = temp;
+run;
+
+
+Q3) SAS Code Formatted Input Methos.
+=> '@1'-Readind ID From first place
+'$3' -Reading as character value for lenght of that digit.
+
+data temp;
+input @1EMPID $ @4ENAME $ @13DEPT $;
+datalines;
+14 Rick      IT
+241 Dan       OPS
+30 Sanvi     IT
+410 Chanchal OPS
+52 Piyu      Fin
+;
+proc print data = temp;
+run;
+
+Q4) SAS Code for SAS Macros.
+=> %Macro - Start the statement.
+   %MEND - End the statement.
+
+
+data sample;
+set sashelp.airline;
+run;
+%my;
+
+%Macro my;
+proc print data = sample;
+run;
+%mend;
+
+
+Q5) GLOBAL Macro Varibale in SAS Code.
+=>
+
+proc print data = sashelp.cars;
+where make = 'Audi' and type = 'Sports';
+TITLE 'Sales as of &SYSDAY &SYSDAY';
+RUN;
+
+
+Q6) LOCAL Macro Varibale in SAS Code.
+=>
+
+%Let make_name = 'Audi';
+%let type_name = 'Sports';
+proc print data = sashelp.cars;
+where make = &make_name and type = &type_name;
+Title 'Sales as of &SYSDAY  &SYDATE';
+run;
+
+
+Q7) SAS Code for Macro % PUT.
+=>
+data _null_;
+CALL SYMPUT('today',
+TRIM(PUT("&sysdate"d, worddate22.)));
+run;
+%put &today;
+
+
+Q8) SAS Code for Macro % RETURN.
+=>
+%macro check_conditional(val);
+ %if&val = 10 %then %return;
+ 
+ data p;
+  x = 34.2;
+ run;
+ 
+%mend check_conditional;
+%check_conditional(11);
+
+
+Q9) SAS Code for Macro % END.
+=>
+%macro test(finish);
+ %let i = 1;
+ %do %while(&i <&finish);
+  %put the value of i is &i;
+  %let i=%eval(&i+1);
+ %END;
+ %MEND test;
+ %test(5)
+
+
+
+
+
+
+
+
+
+
+
+
+
+

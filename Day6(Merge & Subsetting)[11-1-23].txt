@@ -1,0 +1,102 @@
+Q1) Merge in SAS(With Merge & BY statement).
+=>
+/* Merge Dataset With Merge & BY statement*/
+data sample1;
+input ID name$ marks;
+datalines;
+1 Ajay 88 
+2 Sayali 90 
+3 Mrunali 88 
+4 Danish 89 
+5 ghyan 90 
+;
+run;
+proc print data = sample1;
+run;
+
+data sample2;
+input ID Parent$ marks city $;
+datalines;
+1 Santosh 88 Pune
+2 Hitesh 90 Gujarat
+3 Hadu 88 Mumbai
+4 Handi 89 Jaipur
+5 ghni 90 Jammu
+;
+run;
+proc print data = sample2;
+run;
+
+
+data merge1;
+Merge sample1 sample2;
+by ID;
+proc print data = merge1;
+run;
+
+
+Q2) Subsetting in SAS(Subsetting with KEEP)
+=>
+/* Subsetting with KEEP */
+Data salary1;
+infile '/home/u63014188/sasuser.v94/Salary_Data.csv' dlm=',' firstobs=2;
+input Year Salary;
+run;
+
+proc print data = salary1;
+run;
+
+data new_salary;
+SET salary1;
+KEEP Salary;
+run;
+
+proc print data = new_salary;
+run;
+
+
+Q3) Subsetting with DROP in SAS.
+=>
+/* Subsetting with DROP */
+Data salary2;
+infile '/home/u63014188/sasuser.v94/Salary_Data.csv' dlm=',' firstobs=2;
+input Year Salary;
+run;
+
+proc print data = salary2;
+run;
+
+data new_salary;
+SET salary2;
+DROP Salary;
+run;
+
+proc print data = new_salary;
+run;
+
+
+Q4) Subsetting with DELETE in SAS.
+=>
+/* Subsetting with DELETE */
+Data salary3;
+infile '/home/u63014188/sasuser.v94/Salary_Data.csv' dlm=',' firstobs=2;
+input Year Salary;
+run;
+
+proc print data = salary3;
+run;
+
+data new_salary;
+SET salary3;
+if Year < 5.5 then DELETE;
+run;
+
+proc print data = new_salary;
+run;
+
+
+
+
+
+
+

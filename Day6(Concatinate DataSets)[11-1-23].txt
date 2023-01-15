@@ -1,0 +1,129 @@
+Q1) CONCATINATE Using SAS with Different Number Variable.
+=>
+/* Concat Different Number Variable*/
+data sample1;
+input id name$ marks;
+datalines;
+1 Ajay 88
+2 Sayali 90
+3 Mrunali 88
+4 Danish 89
+5 ghyan 90
+;
+run;
+proc print data = sample1;
+run;
+
+data sample2;
+input id name$ marks;
+datalines;
+6 hash 88
+7 ghaju 908 bhana 88
+9 kakul 89
+10 popal 90
+11 utopiua 88
+;
+run;
+proc print data = sample2;
+run;
+
+
+data concat;
+SET sample1 sample2;
+proc print data = concat;
+run;
+
+Q2) CONCATINATE Using SAS with Different Variable Name.
+=>
+/* Concat Different Variable Name*/
+data sample1;
+input Sno name$ marks;
+datalines;
+1 Ajay 88
+2 Sayali 90
+3 Mrunali 88
+4 Danish 89
+5 ghyan 90
+;
+run;
+proc print data = sample1;
+run;
+
+data sample2;
+input Rollno name$ marks;
+datalines;
+6 hash 88
+7 ghaju 908 bhana 88
+9 kakul 89
+10 popal 90
+11 utopiua 88
+;
+run;
+proc print data = sample2;
+run;
+
+
+data diff_var;
+SET sample1(rename=(Sno = ID)) sample2(rename=(Rollno = ID));
+proc print data = diff_var;
+run;
+
+Q3) CONCATINATE Using SAS with Different Variable length(Columns).
+=>
+/* Concat Different Variable length(Columns)*/
+data sample1;
+input Sno name$ marks grade $;
+datalines;
+1 Ajay 88 B
+2 Sayali 90 A
+3 Mrunali 88 A
+4 Danish 89 B
+5 ghyan 90 A
+;
+run;
+proc print data = sample1;
+run;
+
+data sample2;
+input Rollno name$ marks;
+datalines;
+6 hash 88
+7 ghaju 908 bhana 88
+9 kakul 89
+10 popal 90
+11 utopiua 88
+;
+run;
+proc print data = sample2;
+run;
+
+
+
+
+
+
+
+
+
+
+
+
+data diff_var;
+SET sample1 sample2;
+proc print data = diff_var;
+run;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

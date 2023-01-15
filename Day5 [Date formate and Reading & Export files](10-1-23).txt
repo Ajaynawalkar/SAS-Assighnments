@@ -1,0 +1,103 @@
+Q1) SAS code for employee with thier date of joining and format is 'date9.' .
+=>
+# date9. format
+data employee;
+input name $ Date_of_Joining date9.;
+format Date_of_Joining date9.;
+
+datalines;
+Ajay 21OCT2000
+;
+proc print data = employee;
+run;
+
+Q2) SAS Code for date formate date 'mmddyy10.' .
+=>
+#mmddyy10. format
+data employee;
+input name $ Date_of_Joining mmddyy10.;
+format Date_of_Joining mmddyy10.;
+
+datalines;
+Ajay 08/21/2000
+kiran 03/11/2023
+Jay 01/12/2022
+;
+proc print data = employee;
+run;
+
+Q3) SAS Code for date formate date 'mmddyy8.' .
+=>
+#mmddyy8. format
+data employee;
+input name $ Date_of_Joining mmddyy8.;
+format Date_of_Joining mmddyy8.;
+
+datalines;
+Ajay 08/21/20
+kiran 03/11/23
+Jay 01/12/22
+;
+proc print data = employee;
+run;
+
+Q4) SAS Code for date formate date 'worddate20.' .
+=>
+data employee;
+input name $ Date_of_Joining worddate20.;
+format Date_of_Joining worddate20.;
+
+datalines;
+Ajay December 11, 2022
+kiran January 11, 2023
+Jay March 08, 2012
+;
+proc print data = employee;
+run;
+
+Q5) SAS Code for date output formate date.
+=>
+data temp;
+input @1 DOJ1 mmddyy10. @12 DOJ2 mmddyy10.;
+format DOJ1 date11. DOJ2 worddate20.;
+datalines;
+01/12/2012 02/11/1998
+;
+proc print data = temp;
+run;
+
+Q6) Reading Dataset in SAS.
+=>
+data salary;
+infile '/home/u63014188/sasuser.v94/Salary_Data.csv' dlm = ',' firstobs=2;
+input Year Salary;
+run;
+
+proc print data = salary;
+run;
+
+Q7) Export Data in SAS(AIRLINE).
+=>
+proc export data = sashelp.airline
+outfile = '/home/u63014188/sasuser.v94/Airline.csv'
+dbms = csv;
+run;
+
+Q8) Export Data in SAS(Car data)
+=>
+proc export data = sashelp.cars
+outfile= '/home/u63014188/sasuser.v94/sample/car_tab.txt'
+dbms = csv;
+run;
+
+
+
+
+
+
+
+
+
+
+
+
